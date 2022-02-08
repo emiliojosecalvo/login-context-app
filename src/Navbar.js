@@ -58,7 +58,7 @@ const Navbar = () => {
                                         aria-label="login switch"
                                     />
                                 }
-                                label={auth ? 'Logout' : 'Login'}
+                                label={auth ? 'Dark' : 'Ligh'}
                             />
                         </FormGroup>
                     </Box>
