@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -10,11 +10,19 @@ import Switch from '@mui/material/Switch';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
+import { withStyles } from '@mui/styles';
 
-const Navbar = () => {
-    const [auth, setAuth] = React.useState(true);
+const styles = {
+    root: {
+        color: 'black'
+    }
+}
+
+function Navbar(props) {
+
+    const [colorTheme, setColorTheme] = useState(true);
     const handleChange = (event) => {
-        setAuth(event.target.checked);
+        setColorTheme(event.target.checked);
     };
 
     const Search = styled('div')(({ theme }) => ({
@@ -58,22 +66,23 @@ const Navbar = () => {
             },
         },
     }));
+    console.log(props.classes)
 
     return (
-        <AppBar position="static">
-            <Container maxWidth="xl">
+        <AppBar className={props.classes.root} position="static">
+            <Container >
                 <Toolbar disableGutters>
                     <Box sx={{ flexGrow: 1 }}>
                         <FormGroup>
                             <FormControlLabel
                                 control={
                                     <Switch
-                                        checked={auth}
+                                        checked={colorTheme}
                                         onChange={handleChange}
                                         aria-label="login switch"
                                     />
                                 }
-                                label={auth ? 'Dark' : 'Light'}
+                                label={colorTheme ? 'Dark' : 'Light'}
                             />
                         </FormGroup>
                     </Box>
@@ -100,4 +109,4 @@ const Navbar = () => {
         </AppBar>
     );
 };
-export default Navbar;
+export default withStyles(styles)(Navbar);
