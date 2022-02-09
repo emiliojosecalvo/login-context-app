@@ -15,6 +15,10 @@ import { withStyles } from '@mui/styles';
 const styles = {
     root: {
         color: 'black'
+    },
+    flag: {
+        width: '2.5rem',
+        marginLeft: '0.5rem'
     }
 }
 
@@ -71,6 +75,17 @@ function Navbar(props) {
         <AppBar className={props.classes.root} position="static">
             <Container >
                 <Toolbar disableGutters>
+                    <img className={props.classes.flag} src='https://flagicons.lipis.dev/flags/4x3/ve.svg' />
+                    <span className="fi fi-ve"></span>
+                    <span className="fi fi-gr fis"></span>
+                    <Typography
+                        variant="h6"
+                        noWrap
+                        component="div"
+                        sx={{ mr: 2, ml: 2, display: { xs: 'none', md: 'flex' } }}
+                    >
+                        App title
+                    </Typography>
                     <Box sx={{ flexGrow: 1 }}>
                         <FormGroup>
                             <FormControlLabel
@@ -85,15 +100,6 @@ function Navbar(props) {
                             />
                         </FormGroup>
                     </Box>
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="div"
-                        sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
-                    >
-                        App title
-                    </Typography>
-
                     <Search>
                         <SearchIconWrapper>
                             <SearchIcon />
