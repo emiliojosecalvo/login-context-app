@@ -66,7 +66,6 @@ function Navbar(props) {
             },
         },
     }));
-    console.log(props.classes)
 
     return (
         <AppBar className={props.classes.root} position="static">

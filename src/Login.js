@@ -1,20 +1,30 @@
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
-import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
 import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
-import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Visibility from '@mui/icons-material/Visibility';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import IconButton from '@mui/material/IconButton';
 import Button from '@mui/material/Button';
+import { Paper } from '@mui/material';
+import { withStyles } from '@mui/styles';
 
+const styles = {
+    paper: {
+        width: 'fit-content',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: '1rem auto'
+    }
+}
 
-function Login() {
+function Login(props) {
+    const { classes } = props;
 
     const [values, setValues] = useState({
         password: '',
@@ -58,7 +68,7 @@ function Login() {
     };
 
     return (
-        <div>
+        <Paper className={classes.paper}>
             <Box style={{ textAlign: 'center', marginTop: '3rem' }} sx={{ '& > :not(style)': { m: 1 } }}>
                 <div>
                     <FormControl sx={{ m: 1, width: '25ch' }}>
@@ -117,8 +127,8 @@ function Login() {
                 </div>
 
             </Box>
-        </div>
+        </Paper>
     )
 }
 
-export default Login;
+export default withStyles(styles)(Login);
