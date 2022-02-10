@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -11,11 +11,9 @@ import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import { withStyles } from '@mui/styles';
+import { ThemeContext } from './ThemeContext';
 
 const styles = {
-    root: {
-        color: 'black'
-    },
     flag: {
         width: '2.5rem',
         marginLeft: '0.5rem'
@@ -24,9 +22,14 @@ const styles = {
 
 function Navbar(props) {
 
+    const things = useContext(ThemeContext);
+    const { toggleTheme, isLightTheme } = things;
+
     const [colorTheme, setColorTheme] = useState(true);
+
     const handleChange = (event) => {
         setColorTheme(event.target.checked);
+        toggleTheme();
     };
 
     const Search = styled('div')(({ theme }) => ({
@@ -72,10 +75,10 @@ function Navbar(props) {
     }));
 
     return (
-        <AppBar className={props.classes.root} position="static">
+        <AppBar color={isLightTheme ? 'default' : 'primary'} position="static">
             <Container >
                 <Toolbar disableGutters>
-                    <img className={props.classes.flag} src='https://flagicons.lipis.dev/flags/4x3/ve.svg' />
+                    <img className={props.classes.flag} src='https://flagicons.lipis.dev/flags/4x3/ve.svg' alt='venezuela flag' />
                     <span className="fi fi-ve"></span>
                     <span className="fi fi-gr fis"></span>
                     <Typography

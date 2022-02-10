@@ -1,14 +1,18 @@
 import Navbar from './Navbar';
 import Login from './Login';
-import './App.css';
 import PageContent from './PageContent';
+import { ThemeProvider } from './ThemeContext';
+import './App.css';
+
 
 function App() {
   return (
-    <PageContent>
-      <Navbar />
-      <Login />
-    </PageContent>
+    <ThemeProvider>{/** All wrap in this component will have acces to the context  */}
+      <PageContent>
+        <Navbar />
+        <Login />
+      </PageContent>
+    </ThemeProvider>
   );
 }
 
