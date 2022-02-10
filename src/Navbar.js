@@ -81,15 +81,7 @@ function Navbar(props) {
                     <img className={props.classes.flag} src='https://flagicons.lipis.dev/flags/4x3/ve.svg' alt='venezuela flag' />
                     <span className="fi fi-ve"></span>
                     <span className="fi fi-gr fis"></span>
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="div"
-                        sx={{ mr: 2, ml: 2, display: { xs: 'none', md: 'flex' } }}
-                    >
-                        App title
-                    </Typography>
-                    <Box sx={{ flexGrow: 1 }}>
+                    <Box sx={{ ml: '1rem' }}>
                         <FormGroup>
                             <FormControlLabel
                                 control={
@@ -103,18 +95,29 @@ function Navbar(props) {
                             />
                         </FormGroup>
                     </Box>
-                    <Search>
-                        <SearchIconWrapper>
-                            <SearchIcon />
-                        </SearchIconWrapper>
-                        <StyledInputBase
-                            placeholder="Search…"
-                            inputProps={{ 'aria-label': 'search' }}
-                        />
-                    </Search>
+                    <Box sx={{ width: '100%', mr: 2, ml: 2, display: { xs: 'none', sm: 'flex' } }}>
+                        <Typography
+                            variant="h6"
+                            noWrap
+                            component="div"
+                        >
+                            App title
+                        </Typography>
+                    </Box>
+                    <Box>
+                        <Search sx={{ mr: '0' }}>
+                            <SearchIconWrapper>
+                                <SearchIcon />
+                            </SearchIconWrapper>
+                            <StyledInputBase
+                                placeholder="Search…"
+                                inputProps={{ 'aria-label': 'search' }}
+                            />
+                        </Search>
+                    </Box>
                 </Toolbar>
             </Container>
-        </AppBar>
+        </AppBar >
     );
 };
 export default withStyles(styles)(Navbar);
