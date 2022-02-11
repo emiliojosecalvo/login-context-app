@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -43,21 +43,16 @@ function Navbar(props) {
     const { language } = useContext(LanguageContext);
     const { search, flag } = words[language];
 
-
-
-    const [colorTheme, setColorTheme] = useState(true);
-
-    const handleChange = (event) => {
-        setColorTheme(event.target.checked);
+    const handleChange = () => {
         toggleTheme();
     };
 
     const Search = styled('div')(({ theme }) => ({
         position: 'relative',
         borderRadius: theme.shape.borderRadius,
-        backgroundColor: alpha(theme.palette.common.white, 0.15),
+        backgroundColor: alpha('#b3d1ff', 0.45),
         '&:hover': {
-            backgroundColor: alpha(theme.palette.common.white, 0.25),
+            backgroundColor: alpha('#b3d1ff', 0.75),
         },
         marginLeft: 0,
         width: '100%',
@@ -98,7 +93,7 @@ function Navbar(props) {
         <AppBar color={isLightTheme ? 'default' : 'primary'} position="static">
             <Container >
                 <Toolbar disableGutters>
-                    <img className={props.classes.flag} src={flag} alt='venezuela flag' />
+                    <img className={props.classes.flag} src={flag} alt={`${language} flag`} />
                     <span className="fi fi-ve"></span>
                     <span className="fi fi-gr fis"></span>
                     <Box sx={{ ml: '1rem' }}>
@@ -106,12 +101,11 @@ function Navbar(props) {
                             <FormControlLabel
                                 control={
                                     <Switch
-                                        checked={colorTheme}
                                         onChange={handleChange}
                                         aria-label="login switch"
                                     />
                                 }
-                                label={colorTheme ? 'Dark' : 'Light'}
+                                label=''
                             />
                         </FormGroup>
                     </Box>
