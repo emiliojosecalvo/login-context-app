@@ -12,6 +12,7 @@ import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import { withStyles } from '@mui/styles';
 import { ThemeContext } from './ThemeContext';
+import { LanguageContext } from './LanguageContext';
 
 const styles = {
     flag: {
@@ -20,10 +21,29 @@ const styles = {
     }
 }
 
+const words = {
+    spanish: {
+        search: 'Buscar...',
+        flag: 'https://flagicons.lipis.dev/flags/4x3/ve.svg'
+    },
+    english: {
+        search: 'Search...',
+        flag: 'https://flagicons.lipis.dev/flags/4x3/um.svg'
+    },
+    polish: {
+        search: 'Szukaj',
+        flag: 'https://flagicons.lipis.dev/flags/4x3/pl.svg'
+    }
+}
+
 function Navbar(props) {
 
-    const things = useContext(ThemeContext);
-    const { toggleTheme, isLightTheme } = things;
+    const { toggleTheme, isLightTheme } = useContext(ThemeContext);
+
+    const { language } = useContext(LanguageContext);
+    const { search, flag } = words[language];
+
+
 
     const [colorTheme, setColorTheme] = useState(true);
 
@@ -78,7 +98,7 @@ function Navbar(props) {
         <AppBar color={isLightTheme ? 'default' : 'primary'} position="static">
             <Container >
                 <Toolbar disableGutters>
-                    <img className={props.classes.flag} src='https://flagicons.lipis.dev/flags/4x3/ve.svg' alt='venezuela flag' />
+                    <img className={props.classes.flag} src={flag} alt='venezuela flag' />
                     <span className="fi fi-ve"></span>
                     <span className="fi fi-gr fis"></span>
                     <Box sx={{ ml: '1rem' }}>
@@ -101,7 +121,7 @@ function Navbar(props) {
                             noWrap
                             component="div"
                         >
-                            App title
+                            Context App
                         </Typography>
                     </Box>
                     <Box>
@@ -110,7 +130,7 @@ function Navbar(props) {
                                 <SearchIcon />
                             </SearchIconWrapper>
                             <StyledInputBase
-                                placeholder="Search…"
+                                placeholder={search}
                                 inputProps={{ 'aria-label': 'search' }}
                             />
                         </Search>
