@@ -50,10 +50,6 @@ function Login(props) {
     const { email, password, login, selectLanguage } = words[language];
     const { classes } = props;
 
-    const handleChange = (event) => {
-        chooseLanguage(event.target.value);
-    };
-
     const [values, setValues] = useState({
         password: '',
         showPassword: false,
@@ -89,8 +85,6 @@ function Login(props) {
         },
     ];
 
-
-
     return (
         <Paper className={classes.paper}>
             <Box style={{ textAlign: 'center', marginTop: '3rem' }} sx={{ '& > :not(style)': { m: 1 } }}>
@@ -102,7 +96,7 @@ function Login(props) {
                             select
                             label="Select"
                             value={language}
-                            onChange={handleChange}
+                            onChange={chooseLanguage}
                             helperText={selectLanguage}
                         >
                             {languages.map((option) => (

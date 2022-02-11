@@ -39,7 +39,6 @@ const words = {
 function Navbar(props) {
 
     const { toggleTheme, isLightTheme } = useContext(ThemeContext);
-
     const { language } = useContext(LanguageContext);
     const { search, flag } = words[language];
 
